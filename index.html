@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Eric Walsh — Head of Service Readiness & Enablement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#101014;--title:#E8E6E0;--body:#909088;--acc:#7B9BB5;
+  --dim:#1E1E24;--rule:#2A2A34;
+  --ffd:'Cormorant Garamond',Georgia,serif;
+  --ffui:'Barlow Condensed',sans-serif;
+  --ffb:'Barlow',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:300;-webkit-font-smoothing:antialiased}
+
+#prog{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--acc);z-index:9999}
+#nav{position:fixed;right:12px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:9px;z-index:9998}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--rule);cursor:pointer;transition:background .3s,transform .3s}
+.dot.on{background:var(--acc);transform:scale(1.5)}
+
+/* ══ SHARED ══ */
+.sec{position:relative;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.sec::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--acc)}
+.name {font-family:var(--ffd);font-weight:700;font-size:clamp(40px,8vw,92px);color:var(--title);letter-spacing:.04em;line-height:1}
+.role {font-family:var(--ffui);font-size:clamp(9px,1.4vw,12px);font-weight:500;letter-spacing:.28em;color:var(--acc)}
+.blab {font-family:var(--ffui);font-size:clamp(9px,1.2vw,11px);font-weight:600;letter-spacing:.2em;color:var(--acc);text-transform:uppercase;margin-bottom:7px}
+.bt   {font-family:var(--ffb);font-size:clamp(14px,1.7vw,16px);font-weight:300;color:var(--body);line-height:1.65}
+.hr   {height:1px;background:var(--rule)}
+.hra  {height:1px;background:var(--acc);opacity:.55}
+.slid {font-family:var(--ffui);font-weight:600;letter-spacing:.2em;color:var(--acc);position:absolute;top:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.slid .cat{color:var(--body);opacity:.55;font-weight:400}
+.slid .sep{color:var(--rule);margin:0 6px}
+
+/* FOOTER — ALL text beige (--title), links stay accent */
+.fline{
+  font-family:var(--ffui);
+  display:flex;align-items:center;justify-content:center;gap:0;
+  color:var(--title); /* beige for all items */
+}
+.fline a{color:var(--title);text-decoration:none} /* links also beige */
+.fline a:hover{color:var(--acc);text-decoration:underline} /* accent only on hover */
+.fbull{color:var(--title);margin:0 10px}
+
+/* ════ DESKTOP ≥601 ════ */
+@media(min-width:601px){
+  html{scroll-snap-type:y mandatory;overflow-y:scroll;height:100%}
+  .sec{height:100vh;scroll-snap-align:start;scroll-snap-stop:always;padding:56px clamp(40px,7vw,80px) 48px}
+  /* Content width cap — centered, consistent with S1/S7 */
+  .sec > *:not(.ghost):not(.num):not(.slid):not(.fline){
+    max-width:960px;
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .slid{
+    font-size:clamp(11px,1.5vw,14px);
+    /* Track the left edge of the centered 960px content block */
+    left: max(clamp(40px,7vw,80px), calc(50% - 480px));
+    right: max(clamp(40px,7vw,80px), calc(50% - 480px));
+  }
+  .num{position:absolute;bottom:16px;right:28px;font-family:var(--ffui);font-size:9px;letter-spacing:.15em;color:var(--dim)}
+  .fline{position:absolute;bottom:24px;left:clamp(40px,7vw,80px);right:clamp(40px,7vw,80px);font-size:clamp(12px,1.4vw,14px);letter-spacing:.1em;flex-wrap:nowrap}
+  .fbull{margin:0 12px}
+  .mob-arrows{display:none}
+}
+
+/* ════ MOBILE ≤600 ════ */
+@media(max-width:600px){
+  html{scroll-snap-type:y mandatory;overflow-y:scroll;height:100%}
+  #nav{display:none}
+  #prog{display:none}
+  .sec{
+    height:100dvh;
+    scroll-snap-align:start;
+    scroll-snap-stop:always;
+    /* top: safe-area + 52px header zone + 20px breathing room */
+    padding-top:  calc(env(safe-area-inset-top,  0px) + 72px);
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 64px);
+    padding-left:22px;
+    padding-right:22px;
+  }
+  .slid{font-size:10px;left:22px;right:22px;top:calc(env(safe-area-inset-top,0px) + 16px)}
+  .num{display:none}
+  .fline{
+    flex-direction:column;align-items:center;text-align:center;
+    gap:3px;font-size:11px;letter-spacing:.08em;
+    margin-top:12px;position:static;
+    color:var(--title);
+  }
+  .fline a{color:var(--title)}
+  .fbull{display:none}
+  .mob-arrows{
+    display:flex;align-items:center;justify-content:center;
+    padding:4px 0;
+    font-size:18px;
+    color:var(--acc);
+    line-height:1;
+    font-family:var(--ffui);
+    font-variant-emoji:text;
+    -webkit-text-stroke:0px transparent;
+  }
+  /* S1 mobile: name should sit in the visual center, not the mathematical center
+     — nudge content down from top by shifting justify toward flex-end slightly */
+  #s1{padding-top:calc(env(safe-area-inset-top,0px) + 40px)}
+  /* More gap between subtitle and stacked footer on S1 */
+  #s1 .fline{margin-top:28px}
+  /* S7 mobile: more space between Yeats attribution and Eric Walsh */
+
+  /* S6: too much content for one snap section on mobile —
+     allow it to grow and scroll internally */
+  #s6{
+    justify-content:flex-start;
+    height:auto;
+    min-height:100dvh;
+    scroll-snap-align:start;
+    overflow-y:visible;
+    padding-top:calc(env(safe-area-inset-top,0px) + 52px);
+    padding-bottom:calc(env(safe-area-inset-bottom,0px) + 48px);
+  }
+  #s6 .paras{margin-top:0}
+}
+
+/* ══ S1 ══ */
+.s1in{display:flex;flex-direction:column;align-items:center;text-align:center;width:100%}
+.s1in .hra{width:min(60%,400px)}
+.s1sub{font-family:var(--ffb);font-size:clamp(12px,1.5vw,15px);color:var(--body);font-style:italic;letter-spacing:.04em;margin-top:16px}
+
+/* ══ S2 ══ */
+.ghost{position:absolute;font-family:var(--ffd);font-weight:700;color:var(--dim);pointer-events:none;user-select:none;font-size:clamp(70px,14vw,160px);letter-spacing:.06em;line-height:1;left:50%;top:50%;transform:translate(-50%,-50%);z-index:0;white-space:nowrap}
+.blocks{position:relative;z-index:1}
+.block{padding:18px 0 16px 16px;border-bottom:1px solid var(--rule);position:relative}
+.block:last-child{border-bottom:none}
+.block::before{content:'';position:absolute;left:0;top:18px;bottom:16px;width:2px;background:var(--acc);opacity:.3}
+.block.mandate::before{opacity:1;width:3px}
+.block.mandate .bt{color:var(--title);font-size:clamp(15px,1.9vw,17px)}
+
+/* ══ S3 ══ */
+.flowbar{
+  display:flex;align-items:center;justify-content:center;
+  gap:clamp(5px,1vw,12px);flex-wrap:nowrap;
+  margin:24px 0 24px;
+}
+@media(max-width:600px){.flowbar{gap:4px;margin:12px 0 10px;overflow:hidden}}
+.fw{font-family:var(--ffui);font-size:clamp(9px,1.2vw,12px);letter-spacing:.15em;color:var(--body);font-weight:500;white-space:nowrap}
+.fw.ctr{color:var(--title);font-weight:700}
+/* Plain text ↔ arrow — same on desktop and mobile flowbar, no beveling */
+.fa{
+  color:var(--acc);
+  font-size:clamp(12px,1.5vw,16px);
+  line-height:1;flex-shrink:0;
+  font-family:var(--ffui);
+  font-variant-emoji:text;
+  -webkit-text-stroke:0px transparent;
+}
+.mgrid-rule{height:1px;background:var(--rule);margin-top:8px}
+.mgrid{display:grid;grid-template-columns:1fr 1.2fr 1fr}
+@media(max-width:600px){
+  /* On mobile the grid stacks; mob-arrows sit between boxes */
+  .mgrid{grid-template-columns:1fr}
+  .mcol+.mcol{border-left:none!important;border-top:1px solid var(--rule)}
+  .mcol.ctr{border-left:none!important;border-right:none!important;border-top:2px solid var(--acc)!important}
+}
+.mcol{padding:clamp(12px,2vw,24px)}
+.mcol+.mcol{border-left:1px solid var(--rule)}
+.mcol.ctr{background:rgba(30,30,36,.7);border-top:2px solid var(--acc)!important;border-left:1px solid var(--acc)!important;border-right:1px solid var(--acc)!important}
+.mcol.ctr .chdr{color:var(--acc)}
+.mcol.ctr .bt{color:var(--title)}
+/* S3 column headers — FULL CAPS via text-transform */
+.chdr{
+  font-family:var(--ffui);
+  font-size:clamp(9px,1.2vw,11px);
+  font-weight:700;
+  letter-spacing:.16em;
+  color:var(--body);
+  margin-bottom:10px;
+  text-transform:uppercase; /* ensures BUSINESS OBJECTIVES, SERVICE READINESS & ENABLEMENT, OPERATIONS */
+}
+.chr{height:1px;margin-bottom:10px}
+.mcol.ctr .chr{background:var(--acc);opacity:.55}
+.mcol:not(.ctr) .chr{background:var(--rule)}
+
+/* ══ S4 ══ */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:20px}
+@media(max-width:600px){
+  .pgrid{grid-template-columns:1fr}
+  .pcol+.pcol{border-left:none!important;border-top:1px solid var(--rule);padding-top:16px;padding-left:0!important}
+}
+.pcol{padding-right:clamp(12px,2.5vw,28px)}
+.pcol+.pcol{padding-left:clamp(12px,2.5vw,28px);border-left:1px solid var(--rule)}
+.pnum{font-family:var(--ffd);font-weight:700;font-size:clamp(44px,8vw,100px);color:var(--dim);line-height:.92;display:block;margin-bottom:8px}
+.phr{height:1px;background:var(--rule);margin:8px 0 10px}
+/* Principle/Value — NO labels, just the text with a gap between the two parts */
+.pval{font-family:var(--ffb);font-size:clamp(13px,1.6vw,15px);font-weight:300;color:var(--body);line-height:1.65}
+.pval+.pval{margin-top:12px}
+
+/* ══ S5 ══ */
+.elayout{display:grid;grid-template-columns:max-content 1px 1fr;gap:0 clamp(14px,3vw,48px);margin-top:20px;align-items:start}
+@media(max-width:600px){.elayout{gap:0 12px}.dword span{font-size:clamp(18px,4.5vw,28px)!important}}
+.dword{display:flex;flex-direction:column;align-items:center;padding-top:4px}
+.dword span{font-family:var(--ffd);font-weight:700;font-size:clamp(24px,4vw,50px);color:var(--dim);letter-spacing:.08em;line-height:1.06;display:block;user-select:none}
+.ediv{background:var(--rule)}
+.eblocks{display:flex;flex-direction:column}
+.eblock{padding:18px 0;border-bottom:1px solid var(--rule)}
+.eblock:last-child{border-bottom:none}
+
+/* ══ S6 — exactly 3 hairlines ══
+   Line 1: above "My experience..." (border-top on first .pi)
+   Line 2: between "...digital innovation." and "I am curious..."
+   Line 3: between "...with enthusiasm." and "My next chapter..."
+   All other paragraphs: NO borders
+*/
+.paras{display:flex;flex-direction:column;gap:0}
+.paras .pi{
+  font-family:var(--ffb);font-size:clamp(13px,1.6vw,16px);
+  font-weight:300;color:var(--body);line-height:1.7;
+  padding:13px 0;
+  /* no border by default */
+}
+.paras .pi.ital{font-style:italic}
+/* Line 1: above para 1 (Cablevision) */
+.paras .pi:first-child{border-top:1px solid var(--rule)}
+/* Paras 2 and 3 (MSG Networks, MSG GO): no border between them */
+/* Line 2: above para 5 (I am curious) — after Emmy */
+.paras .pi.rule-above{border-top:1px solid var(--rule)}
+/* Line 3: above pclose (My next chapter) */
+.paras .pclose{
+  font-family:var(--ffd);font-size:clamp(16px,2.3vw,22px);
+  font-weight:600;color:var(--title);line-height:1.5;
+  padding:13px 0;
+  border-top:1px solid var(--rule); /* Line 3 */
+}
+
+/* ══ S7 ══ */
+#s7{text-align:center;align-items:center}
+.qwrap{max-width:640px;display:flex;flex-direction:column;align-items:center}
+.qt{font-family:var(--ffd);font-size:clamp(18px,3vw,30px);font-weight:400;color:var(--title);line-height:1.58;margin:12px 0 20px}
+.qr{width:100px;height:1px;background:var(--acc);opacity:.5;margin-bottom:16px}
+.qa{font-family:var(--ffui);font-size:clamp(10px,1.3vw,12px);letter-spacing:.22em;color:var(--acc);font-style:italic;margin-bottom:clamp(36px,6vw,56px)}
+.qn{font-family:var(--ffui);font-size:11px;font-weight:700;letter-spacing:.28em;color:var(--body);margin-bottom:8px}
+#s7 .fline{position:static;margin-top:6px;justify-content:center;font-size:clamp(11px,1.3vw,13px);letter-spacing:.09em;gap:0;flex-direction:row;flex-wrap:nowrap}
+@media(max-width:600px){#s7 .fline{flex-direction:column;gap:3px;font-size:11px}}
+
+/* ══ ENTRANCE — desktop only ══ */
+@media(min-width:601px) and (prefers-reduced-motion:no-preference){
+  .ein{animation:fu .6s ease both;animation-play-state:paused}
+  .sec.in .ein{animation-play-state:running}
+  .sec.in .ein:nth-child(1){animation-delay:.04s}.sec.in .ein:nth-child(2){animation-delay:.10s}
+  .sec.in .ein:nth-child(3){animation-delay:.16s}.sec.in .ein:nth-child(4){animation-delay:.22s}
+  .sec.in .ein:nth-child(5){animation-delay:.28s}.sec.in .ein:nth-child(6){animation-delay:.34s}
+  .sec.in .ein:nth-child(7){animation-delay:.40s}.sec.in .ein:nth-child(8){animation-delay:.46s}
+  .sec.in .ein:nth-child(9){animation-delay:.52s}
+}
+@keyframes fu{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(max-width:600px){.ein{animation:none!important;opacity:1!important;transform:none!important}}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+<nav id="nav">
+  <div class="dot" onclick="go(0)"></div>
+  <div class="dot" onclick="go(1)"></div>
+  <div class="dot" onclick="go(2)"></div>
+  <div class="dot" onclick="go(3)"></div>
+  <div class="dot" onclick="go(4)"></div>
+  <div class="dot" onclick="go(5)"></div>
+  <div class="dot" onclick="go(6)"></div>
+</nav>
+
+<!-- S1 -->
+<section class="sec in" id="s1" data-i="0">
+  <div class="s1in">
+    <div class="ein role" style="margin-bottom:14px">HEAD OF SERVICE READINESS &amp; ENABLEMENT</div>
+    <div class="ein hra" style="margin-bottom:10px"></div>
+    <h1 class="ein name">ERIC WALSH</h1>
+    <div class="ein hra" style="margin-top:10px;margin-bottom:16px"></div>
+    <p class="ein s1sub">Technology Transformation &nbsp;·&nbsp; Service Readiness &nbsp;·&nbsp; Operational Excellence</p>
+  </div>
+  <!-- All footer text beige; links beige too (accent only on hover) -->
+  <div class="fline ein">
+    <a href="mailto:eric.walsh.digital@gmail.com">eric.walsh.digital@gmail.com</a>
+    <span class="fbull">·</span>
+    <span>917.696.7850</span>
+    <span class="fbull">·</span>
+    <a href="https://linkedin.com/in/eric-walsh-digital" target="_blank" rel="noopener">/in/eric-walsh-digital</a>
+  </div>
+  <span class="num">01 / 07</span>
+</section>
+
+<!-- S2 -->
+<section class="sec" id="s2" data-i="1">
+  <div class="slid">SCALING SERVICE READINESS &amp; ENABLEMENT</div>
+  <div class="ghost">SCALE</div>
+  <div class="blocks">
+    <div class="block ein">
+      <div class="blab">The Enterprise Reality</div>
+      <p class="bt">Organizations are actively seeking to reduce OEM dependency. They operate unique legacy ecosystems with varying maturity levels and technical debt. The goal: implement strategies to achieve technological independence.</p>
+    </div>
+    <div class="block ein">
+      <div class="blab">The Challenge</div>
+      <p class="bt">Innovation consistently outpaces infrastructure, creating gaps between expectations and operational delivery. Tribal knowledge must be targeted and eliminated — replaced by a structure that scales.</p>
+    </div>
+    <div class="block ein">
+      <div class="blab">The Opportunity</div>
+      <p class="bt">The velocity for next-generation capabilities — like OPTAS — to create opportunities for differentiation and market leadership is massive.</p>
+    </div>
+    <div class="block mandate ein">
+      <div class="blab">The Mandate</div>
+      <p class="bt">Service readiness delivers comprehensive, scalable, repeatable processes adopted across the organization. Team mentoring is critical to successful buy-in.</p>
+    </div>
+  </div>
+  <span class="num">02 / 07</span>
+</section>
+
+<!-- S3 -->
+<section class="sec" id="s3" data-i="2">
+  <div class="slid">THE MODEL</div>
+  <!-- Flowbar: plain ↔ text arrows, no emoji/beveling -->
+  <div class="flowbar ein">
+    <span class="fw">INNOVATION</span>
+    <span class="fa" aria-hidden="true">&#x2194;&#xFE0E;</span>
+    <span class="fw ctr">SERVICE READINESS &amp; ENABLEMENT</span>
+    <span class="fa" aria-hidden="true">&#x2194;&#xFE0E;</span>
+    <span class="fw">OPERATIONS</span>
+  </div>
+  <div class="mgrid-rule ein"></div>
+  <div class="mgrid">
+    <!-- col 1 -->
+    <div class="mcol ein">
+      <div class="chdr">Business Objectives</div>
+      <div class="chr"></div>
+      <p class="bt">Strategic priorities set the direction with every initiative aligning to measurable business outcomes.</p>
+    </div>
+    <!-- mobile ↕ arrow between col1 and col2: plain Unicode ↕, hidden on desktop -->
+    <div class="mob-arrows" aria-hidden="true">&#x2195;&#xFE0E;</div>
+    <!-- col 2 -->
+    <div class="mcol ctr ein">
+      <div class="chdr">Service Readiness &amp; Enablement</div>
+      <div class="chr"></div>
+      <p class="bt">Execution at scale through structured process, continuous optimization, and cross-functional governance — with frontline operations embedded directly into the build cycle from the outset.</p>
+    </div>
+    <!-- mobile ↕ arrow between col2 and col3 -->
+    <div class="mob-arrows" aria-hidden="true">&#x2195;&#xFE0E;</div>
+    <!-- col 3 -->
+    <div class="mcol ein">
+      <div class="chdr">Operations</div>
+      <div class="chr"></div>
+      <p class="bt">A continuous feedback loop ensures innovation is operationally viable and allows for operations to evolve with each delivery informing the next iteration.</p>
+    </div>
+  </div>
+  <span class="num">03 / 07</span>
+</section>
+
+<!-- S4 — no Principle/Value labels, just the two-part text -->
+<section class="sec" id="s4" data-i="3">
+  <div class="slid">CORE PRINCIPLES</div>
+  <div class="pgrid">
+    <div class="pcol ein">
+      <span class="pnum">01</span>
+      <div class="blab">Vendor Independence</div>
+      <div class="phr"></div>
+      <p class="pval">Preserve flexibility and enable the enterprise to adopt, integrate, and scale the best technologies as innovation evolves — free from vendor lock-in.</p>
+      <p class="pval">Operational freedom is built, not declared. Built for the business, for the customer, and for the teams that deliver it every day.</p>
+    </div>
+    <div class="pcol ein">
+      <span class="pnum">02</span>
+      <div class="blab">Legacy as a Foundational Asset</div>
+      <div class="phr"></div>
+      <p class="pval">Institutional knowledge is not a liability — it's a competitive advantage. The goal is building systems and processes that make it permanent, scalable, and transferable.</p>
+      <p class="pval">Honor what exists. Eliminate what limits. Build what lasts.</p>
+    </div>
+    <div class="pcol ein">
+      <span class="pnum">03</span>
+      <div class="blab">Leadership</div>
+      <div class="phr"></div>
+      <p class="pval">Scalable delivery requires more than process — it requires people who are aligned, trusted, and equipped to execute.</p>
+      <p class="pval">Build the team. Earn the trust. Deliver together.</p>
+    </div>
+  </div>
+  <span class="num">04 / 07</span>
+</section>
+
+<!-- S5 -->
+<section class="sec" id="s5" data-i="4">
+  <div class="slid">THE EXECUTION</div>
+  <div class="elayout">
+    <div class="dword ein"><span>D</span><span>E</span><span>L</span><span>I</span><span>V</span><span>E</span><span>R</span></div>
+    <div class="ediv ein"></div>
+    <div class="eblocks">
+      <div class="eblock ein">
+        <div class="blab">Built to Outlast</div>
+        <p class="bt" style="margin-top:7px">Each framework designed, tested, documented, and handed off with confidence.</p>
+      </div>
+      <div class="eblock ein">
+        <div class="blab">Ownership</div>
+        <p class="bt" style="margin-top:7px">Develop and execute pilots with clearly defined criteria, rigorous go/no-go governance, and hyper-care stabilization through to full operations.</p>
+      </div>
+      <div class="eblock ein">
+        <div class="blab">The Goal</div>
+        <p class="bt" style="margin-top:7px">Deliver with zero downtime, on time and on budget — enabling frontline execution, accelerating revenue growth and monetization, and exceeding expectations.</p>
+      </div>
+    </div>
+  </div>
+  <span class="num">05 / 07</span>
+</section>
+
+<!-- S6 — exactly 3 hairlines:
+     1. above "My experience..." (.pi:first-child has border-top)
+     2. above "I am curious..." (.rule-above)
+     3. above "My next chapter..." (.pclose has border-top)
+     No other borders between paragraphs.
+-->
+<section class="sec" id="s6" data-i="5">
+  <div class="slid"><span class="cat">ALIGNMENT</span><span class="sep">|</span>I'M YOUR GUY</div>
+  <div class="paras">
+    <!-- Line 1 above this -->
+    <p class="pi ein">My experience at Cablevision was foundational — selected for their innovation think tank, strategizing, testing, and developing the initial digital set-top box. The same technology in everyone's living room today.</p>
+    <!-- No line between these two -->
+    <p class="pi ein">At Madison Square Garden Networks, the #1 media market in the world with millions of customers, I built a career conceptualizing and launching complex products that shaped the industry and transformed MSG Networks — live in an unparalleled high-pressure environment.</p>
+    <!-- No line between these two -->
+    <p class="pi ein">Delivering the MSG GO migration during Covid — coordinating a global team across diverse geographic locations — remains a career highlight. It was only possible through a foundation of respect, trust, and shared purpose.</p>
+    <!-- No line between these two -->
+    <p class="pi ital ein">Recognized by industry peers with six Emmy Awards, including the first for digital innovation.</p>
+    <!-- Line 2 above this -->
+    <p class="pi rule-above ein">I am curious, thrive on ambiguity, and keep one eye on the details and the other on the big picture.</p>
+    <!-- No line between these two -->
+    <p class="pi ein">Every capability this role requires I've done. Media technology and independent software share the same core challenges: legacy ecosystems, vendor dependency, and the pressure to innovate faster than the organization can absorb. The domain is different, but the discipline isn't.</p>
+    <!-- No line between these two -->
+    <p class="pi ein">The role being based in Dublin is an opportunity the family welcomes with enthusiasm.</p>
+    <!-- Line 3 above this (via .pclose border-top) -->
+    <p class="pclose ein">My next chapter is about the right fit, professionally and culturally. The more I've explored Origina, the more I recognize the values, the mission, and the people; the more I see alignment. It feels like the right room.</p>
+  </div>
+  <span class="num">06 / 07</span>
+</section>
+
+<!-- S7 — all footer text beige -->
+<section class="sec" id="s7" data-i="6">
+  <div class="qwrap">
+    <span class="ein" style="font-family:var(--ffd);font-size:clamp(55px,10vw,110px);color:var(--dim);line-height:.5;display:block;margin-bottom:10px">&ldquo;</span>
+    <p class="ein qt">Happiness is neither virtue nor pleasure,<br>nor this thing nor that,<br>but simply growth.<br>We are happy when we are growing.</p>
+    <div class="ein qr"></div>
+    <p class="ein qa">— W.B. Yeats</p>
+    <p class="ein qn">ERIC WALSH</p>
+    <div class="fline ein">
+      <a href="mailto:eric.walsh.digital@gmail.com">eric.walsh.digital@gmail.com</a>
+      <span class="fbull">·</span>
+      <span>917.696.7850</span>
+      <span class="fbull">·</span>
+      <a href="https://linkedin.com/in/eric-walsh-digital" target="_blank" rel="noopener">/in/eric-walsh-digital</a>
+    </div>
+  </div>
+  <span class="num">07 / 07</span>
+</section>
+
+<script>
+const secs=document.querySelectorAll('.sec');
+const dots=document.querySelectorAll('.dot');
+const prog=document.getElementById('prog');
+function update(){
+  const mid=window.innerHeight*.5;let active=0;
+  secs.forEach((s,i)=>{
+    const r=s.getBoundingClientRect();
+    if(r.top<window.innerHeight*.9) s.classList.add('in');
+    if(r.top<=mid&&r.bottom>mid) active=i;
+  });
+  dots.forEach((d,i)=>d.classList.toggle('on',i===active));
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  prog.style.width=(h>0?Math.min(window.scrollY/h*100,100):0)+'%';
+}
+window.addEventListener('scroll',update,{passive:true});
+update();setTimeout(update,300);setTimeout(update,800);
+function go(i){secs[i].scrollIntoView({behavior:'smooth'})}
+document.addEventListener('keydown',e=>{
+  const cur=[...secs].findIndex(s=>{const r=s.getBoundingClientRect();return r.top<=window.innerHeight*.5&&r.bottom>window.innerHeight*.5});
+  if((e.key==='ArrowDown'||e.key==='ArrowRight')&&cur<secs.length-1)secs[cur+1].scrollIntoView({behavior:'smooth'});
+  if((e.key==='ArrowUp'||e.key==='ArrowLeft')&&cur>0)secs[cur-1].scrollIntoView({behavior:'smooth'});
+});
+</script>
+</body>
+</html>
