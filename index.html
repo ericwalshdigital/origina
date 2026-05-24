@@ -72,7 +72,7 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
       22px
       calc(env(safe-area-inset-bottom,0px) + 70px);
   }
-  .slid{font-size:11px;letter-spacing:.16em;left:22px;right:22px;top:calc(env(safe-area-inset-top,0px) + 50px)}
+  .slid{font-size:12px;letter-spacing:.16em;left:22px;right:22px;top:calc(env(safe-area-inset-top,0px) + 50px)}
   .num{display:none}
 
   /* FOOTER stacked, centered, beige */
@@ -108,13 +108,13 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
   #s6b::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--acc)}
 
   /* FIX 2: Mobile legibility */
-  .bt{font-size:15px;line-height:1.7}
-  .blab{font-size:11px;letter-spacing:.16em;margin-bottom:8px}
+  .bt{font-size:17px;line-height:1.75;font-weight:400}
+  .blab{font-size:12px;letter-spacing:.16em;margin-bottom:9px;font-weight:700}
   .block{padding:18px 0 16px 16px}
 
   /* FIX 3: S4 ghost numerals — much smaller on mobile */
   .pnum{font-size:clamp(36px,8vw,52px) !important}
-  .pval{font-size:15px;line-height:1.68}
+  .pval{font-size:17px;line-height:1.72;font-weight:400}
 
   /* FIX 4: S3 flowbar — smaller text, allow slight overflow hide */
   .flowbar{gap:3px;margin:10px 0 8px}
@@ -122,9 +122,9 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
   .fa{font-size:13px}
 
   /* S6/S6b paragraph sizing */
-  .paras .pi{font-size:15px;line-height:1.72;padding:13px 0}
-  .paras .pclose{font-size:19px;line-height:1.5;padding:14px 0}
-  .s6b-paras .pi{font-size:15px;line-height:1.72;padding:13px 0}
+  .paras .pi{font-size:17px;line-height:1.75;padding:14px 0;font-weight:400}
+  .paras .pclose{font-size:21px;line-height:1.5;padding:14px 0;font-weight:600}
+  .s6b-paras .pi{font-size:17px;line-height:1.75;padding:14px 0;font-weight:400}
 
   /* mob-arrows */
   .mob-arrows{display:flex;align-items:center;justify-content:center;padding:4px 0;font-size:16px;color:var(--acc);line-height:1;font-family:var(--ffui);font-variant-emoji:text}
@@ -201,7 +201,7 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
 .s6b-paras{display:flex;flex-direction:column;gap:0}
 .s6b-paras .pi{font-family:var(--ffb);font-size:15px;font-weight:300;color:var(--body);line-height:1.72;padding:13px 0;border-bottom:1px solid var(--rule)}
 .s6b-paras .pi:first-child{border-top:1px solid var(--rule)}
-.s6b-close{font-family:var(--ffd);font-size:clamp(20px,5vw,26px);font-weight:600;color:var(--title);line-height:1.45;padding:18px 0 0;border-top:1px solid var(--acc);margin-top:6px}
+.s6b-close{font-family:var(--ffd);font-size:clamp(22px,5.5vw,28px);font-weight:700;color:var(--title);line-height:1.45;padding:18px 0 0;border-top:1px solid var(--acc);margin-top:6px}
 .s6b-label{font-family:var(--ffui);font-size:11px;font-weight:600;letter-spacing:.16em;color:var(--acc);position:absolute;top:calc(env(safe-area-inset-top,0px) + 50px);left:22px;right:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 /* ══ S7 ══ */
@@ -351,7 +351,7 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
 
 <!-- S6b: mobile only — Part 2 with climax prominent -->
 <div id="s6b" data-i="6">
-  <div class="s6b-label"><span style="color:var(--body);opacity:.55;font-weight:400">ALIGNMENT</span><span style="color:var(--rule);margin:0 6px">|</span>I'M YOUR GUY</div>
+  <div class="s6b-label"><span style="color:var(--body);opacity:.55;font-weight:400">ALIGNMENT</span><span style="color:var(--body);opacity:.4;margin:0 6px">|</span>I'M YOUR GUY</div>
   <div class="s6b-paras">
     <p class="pi">I am curious, thrive on ambiguity, and keep one eye on the details and the other on the big picture.</p>
     <p class="pi">Every capability this role requires I've done. Media technology and independent software share the same core challenges: legacy ecosystems, vendor dependency, and the pressure to innovate faster than the organization can absorb. The domain is different, but the discipline isn't.</p>
