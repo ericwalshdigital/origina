@@ -27,50 +27,37 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
 /* ══ SHARED ══ */
 .sec{position:relative;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
 .sec::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--acc)}
-
 .name {font-family:var(--ffd);font-weight:700;font-size:clamp(40px,8vw,92px);color:var(--title);letter-spacing:.04em;line-height:1}
 .role {font-family:var(--ffui);font-size:clamp(9px,1.4vw,12px);font-weight:500;letter-spacing:.28em;color:var(--acc)}
 .blab {font-family:var(--ffui);font-size:clamp(9px,1.2vw,11px);font-weight:600;letter-spacing:.2em;color:var(--acc);text-transform:uppercase;margin-bottom:7px}
 .bt   {font-family:var(--ffb);font-size:clamp(14px,1.7vw,16px);font-weight:300;color:var(--body);line-height:1.65}
 .hr   {height:1px;background:var(--rule)}
 .hra  {height:1px;background:var(--acc);opacity:.55}
-
-.slid{font-family:var(--ffui);font-weight:600;letter-spacing:.2em;color:var(--acc);position:absolute;top:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.slid {font-family:var(--ffui);font-weight:600;letter-spacing:.2em;color:var(--acc);position:absolute;top:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .slid .cat{color:var(--body);opacity:.55;font-weight:400}
 .slid .sep{color:var(--rule);margin:0 6px}
-
-/* FOOTER — all beige, links beige, accent on hover */
 .fline{font-family:var(--ffui);display:flex;align-items:center;justify-content:center;gap:0;color:var(--title)}
 .fline a{color:var(--title);text-decoration:none}
 .fline a:hover{color:var(--acc);text-decoration:underline}
 .fbull{color:var(--title);margin:0 10px}
 
-/* ════════════ DESKTOP ≥601px ════════════ */
+/* ════ DESKTOP ≥601px ════ */
 @media(min-width:601px){
   html{scroll-snap-type:y mandatory;overflow-y:scroll;height:100%}
-  .sec{
-    height:100vh;scroll-snap-align:start;scroll-snap-stop:always;
-    padding:56px clamp(40px,7vw,80px) 48px;
-  }
-  /* Content max-width centered */
-  .sec > *:not(.ghost):not(.num):not(.slid):not(.fline){
-    max-width:960px;width:100%;margin-left:auto;margin-right:auto;
-  }
-  .slid{
-    font-size:clamp(11px,1.5vw,14px);
-    left:max(clamp(40px,7vw,80px), calc(50% - 480px));
-    right:max(clamp(40px,7vw,80px), calc(50% - 480px));
-  }
+  .sec{height:100vh;scroll-snap-align:start;scroll-snap-stop:always;padding:56px clamp(40px,7vw,80px) 48px}
+  .sec > *:not(.ghost):not(.num):not(.slid):not(.fline){max-width:960px;width:100%;margin-left:auto;margin-right:auto}
+  .slid{font-size:clamp(11px,1.5vw,14px);left:max(clamp(40px,7vw,80px),calc(50% - 480px));right:max(clamp(40px,7vw,80px),calc(50% - 480px))}
   .num{position:absolute;bottom:16px;right:28px;font-family:var(--ffui);font-size:9px;letter-spacing:.15em;color:var(--dim)}
   .fline{position:absolute;bottom:24px;left:clamp(40px,7vw,80px);right:clamp(40px,7vw,80px);font-size:clamp(12px,1.4vw,14px);letter-spacing:.1em;flex-wrap:nowrap}
   .fbull{margin:0 12px}
-  /* Mobile-only elements hidden on desktop */
   .mob-arrows{display:none}
-  /* S6 mobile split — both parts visible as ONE section on desktop */
-  #s6b{display:none}
+  /* S6b hidden on desktop — all content in S6 */
+  #s6b{display:none !important}
+  /* desktop-only elements always visible on desktop */
+  .desktop-only{display:block !important}
 }
 
-/* ════════════ MOBILE ≤600px ════════════ */
+/* ════ MOBILE ≤600px ════ */
 @media(max-width:600px){
   html{scroll-snap-type:y mandatory;overflow-y:scroll;height:100%}
   #nav{display:none}
@@ -81,31 +68,31 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
     scroll-snap-align:start;
     scroll-snap-stop:always;
     padding:
-      calc(env(safe-area-inset-top,0px) + 72px)
+      calc(env(safe-area-inset-top,0px) + 80px)
       22px
-      calc(env(safe-area-inset-bottom,0px) + 64px);
+      calc(env(safe-area-inset-bottom,0px) + 70px);
   }
-  .slid{font-size:10px;left:22px;right:22px;top:calc(env(safe-area-inset-top,0px)+16px)}
+  .slid{font-size:11px;letter-spacing:.16em;left:22px;right:22px;top:calc(env(safe-area-inset-top,0px)+18px)}
   .num{display:none}
 
-  /* FOOTER stacked, centered, all beige */
-  .fline{
-    flex-direction:column;align-items:center;text-align:center;
-    gap:4px;font-size:13px;letter-spacing:.06em;
-    margin-top:20px;position:static;color:var(--title);
-  }
+  /* FOOTER stacked, centered, beige */
+  .fline{flex-direction:column;align-items:center;text-align:center;gap:4px;font-size:13px;letter-spacing:.06em;margin-top:20px;position:static;color:var(--title)}
   .fline a{color:var(--title)}
   .fbull{display:none}
 
-  /* S1 specific — tighten top void */
-  #s1{padding-top:calc(env(safe-area-inset-top,0px) + 40px)}
-  #s1 .fline{margin-top:28px}
+  /* FIX 1: desktop-only paragraphs hidden on mobile via CSS — belt AND suspenders */
+  .desktop-only{display:none !important}
 
-  /* S6a on mobile — part 1 (background + Emmy) */
-  #s6{height:100dvh;scroll-snap-align:start}
-  /* S6b on mobile — part 2 (I am curious + close) */
+  /* S1: tighten so name sits in visual center */
+  #s1{padding-top:calc(env(safe-area-inset-top,0px) + 44px)}
+  #s1 .fline{margin-top:24px}
+
+  /* S6: part 1 only — same height as other sections */
+  #s6{height:100dvh;scroll-snap-align:start;scroll-snap-stop:always}
+
+  /* S6b: mobile part 2 — shown as full snap section */
   #s6b{
-    display:flex; /* shown on mobile */
+    display:flex !important;
     height:100dvh;
     scroll-snap-align:start;
     scroll-snap-stop:always;
@@ -114,29 +101,33 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
     justify-content:center;
     overflow:hidden;
     padding:
-      calc(env(safe-area-inset-top,0px) + 72px)
+      calc(env(safe-area-inset-top,0px) + 80px)
       22px
-      calc(env(safe-area-inset-bottom,0px) + 64px);
+      calc(env(safe-area-inset-bottom,0px) + 70px);
   }
   #s6b::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--acc)}
 
-  /* MOBILE LEGIBILITY — larger text throughout */
-  .bt{font-size:16px;line-height:1.7}
-  .blab{font-size:11px;letter-spacing:.18em;margin-bottom:9px}
-  .slid{font-size:11px;letter-spacing:.18em}
-  .block{padding:20px 0 18px 18px}
-  .chdr{font-size:11px;letter-spacing:.14em;margin-bottom:12px}
-  .pnum{font-size:clamp(52px,12vw,80px)}
-  .pval{font-size:16px;line-height:1.7}
-  .paras .pi{font-size:16px;line-height:1.75;padding:15px 0}
-  .paras .pclose{font-size:20px;line-height:1.55;padding:16px 0}
+  /* FIX 2: Mobile legibility */
+  .bt{font-size:15px;line-height:1.7}
+  .blab{font-size:11px;letter-spacing:.16em;margin-bottom:8px}
+  .block{padding:18px 0 16px 16px}
+
+  /* FIX 3: S4 ghost numerals — much smaller on mobile */
+  .pnum{font-size:clamp(36px,8vw,52px) !important}
+  .pval{font-size:15px;line-height:1.68}
+
+  /* FIX 4: S3 flowbar — smaller text, allow slight overflow hide */
+  .flowbar{gap:3px;margin:10px 0 8px}
+  .fw{font-size:8px;letter-spacing:.08em}
+  .fa{font-size:13px}
+
+  /* S6/S6b paragraph sizing */
+  .paras .pi{font-size:15px;line-height:1.72;padding:13px 0}
+  .paras .pclose{font-size:19px;line-height:1.5;padding:14px 0}
+  .s6b-paras .pi{font-size:15px;line-height:1.72;padding:13px 0}
 
   /* mob-arrows */
-  .mob-arrows{
-    display:flex;align-items:center;justify-content:center;
-    padding:4px 0;font-size:18px;color:var(--acc);line-height:1;
-    font-family:var(--ffui);font-variant-emoji:text;
-  }
+  .mob-arrows{display:flex;align-items:center;justify-content:center;padding:4px 0;font-size:16px;color:var(--acc);line-height:1;font-family:var(--ffui);font-variant-emoji:text}
 }
 
 /* ══ S1 ══ */
@@ -145,7 +136,7 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
 .s1sub{font-family:var(--ffb);font-size:clamp(12px,1.5vw,15px);color:var(--body);font-style:italic;letter-spacing:.04em;margin-top:16px}
 
 /* ══ S2 ══ */
-.ghost{position:absolute;font-family:var(--ffd);font-weight:700;color:var(--dim);pointer-events:none;user-select:none;font-size:clamp(70px,14vw,160px);letter-spacing:.06em;line-height:1;left:50%;top:50%;transform:translate(-50%,-50%);z-index:0;white-space:nowrap}
+.ghost{position:absolute;font-family:var(--ffd);font-weight:700;color:var(--dim);pointer-events:none;user-select:none;font-size:clamp(60px,12vw,160px);letter-spacing:.06em;line-height:1;left:50%;top:50%;transform:translate(-50%,-50%);z-index:0;white-space:nowrap;opacity:.6}
 .blocks{position:relative;z-index:1}
 .block{padding:18px 0 16px 16px;border-bottom:1px solid var(--rule);position:relative}
 .block:last-child{border-bottom:none}
@@ -154,53 +145,51 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
 .block.mandate .bt{color:var(--title);font-size:clamp(15px,1.9vw,17px)}
 
 /* ══ S3 ══ */
-.flowbar{display:flex;align-items:center;justify-content:center;gap:clamp(5px,1vw,12px);flex-wrap:nowrap;margin:24px 0 24px}
-@media(max-width:600px){.flowbar{gap:4px;margin:12px 0 10px;overflow:hidden}}
-.fw{font-family:var(--ffui);font-size:clamp(9px,1.2vw,12px);letter-spacing:.15em;color:var(--body);font-weight:500;white-space:nowrap}
+.flowbar{display:flex;align-items:center;justify-content:center;gap:clamp(4px,1vw,12px);flex-wrap:nowrap;margin:20px 0 20px;overflow:hidden}
+.fw{font-family:var(--ffui);font-size:clamp(8px,1.1vw,12px);letter-spacing:.12em;color:var(--body);font-weight:500;white-space:nowrap}
 .fw.ctr{color:var(--title);font-weight:700}
-.fa{color:var(--acc);font-size:clamp(12px,1.5vw,16px);line-height:1;flex-shrink:0;font-family:var(--ffui);font-variant-emoji:text}
-.mgrid-rule{height:1px;background:var(--rule);margin-top:8px}
+.fa{color:var(--acc);font-size:clamp(11px,1.4vw,16px);line-height:1;flex-shrink:0;font-family:var(--ffui);font-variant-emoji:text}
+.mgrid-rule{height:1px;background:var(--rule);margin-top:4px}
 .mgrid{display:grid;grid-template-columns:1fr 1.2fr 1fr}
 @media(max-width:600px){
   .mgrid{grid-template-columns:1fr}
   .mcol+.mcol{border-left:none!important;border-top:1px solid var(--rule)}
   .mcol.ctr{border-left:none!important;border-right:none!important;border-top:2px solid var(--acc)!important}
 }
-.mcol{padding:clamp(12px,2vw,24px)}
+.mcol{padding:clamp(10px,2vw,24px)}
 .mcol+.mcol{border-left:1px solid var(--rule)}
 .mcol.ctr{background:rgba(30,30,36,.7);border-top:2px solid var(--acc)!important;border-left:1px solid var(--acc)!important;border-right:1px solid var(--acc)!important}
 .mcol.ctr .chdr{color:var(--acc)}
 .mcol.ctr .bt{color:var(--title)}
-.chdr{font-family:var(--ffui);font-size:clamp(9px,1.2vw,11px);font-weight:700;letter-spacing:.16em;color:var(--body);margin-bottom:10px;text-transform:uppercase}
-.chr{height:1px;margin-bottom:10px}
+.chdr{font-family:var(--ffui);font-size:clamp(9px,1.2vw,11px);font-weight:700;letter-spacing:.16em;color:var(--body);margin-bottom:8px;text-transform:uppercase}
+.chr{height:1px;margin-bottom:8px}
 .mcol.ctr .chr{background:var(--acc);opacity:.55}
 .mcol:not(.ctr) .chr{background:var(--rule)}
 
 /* ══ S4 ══ */
-.pgrid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:20px}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:16px}
 @media(max-width:600px){
-  .pgrid{grid-template-columns:1fr}
-  .pcol+.pcol{border-left:none!important;border-top:1px solid var(--rule);padding-top:16px;padding-left:0!important}
+  .pgrid{grid-template-columns:1fr;margin-top:12px}
+  .pcol+.pcol{border-left:none!important;border-top:1px solid var(--rule);padding-top:14px;padding-left:0!important}
 }
 .pcol{padding-right:clamp(12px,2.5vw,28px)}
 .pcol+.pcol{padding-left:clamp(12px,2.5vw,28px);border-left:1px solid var(--rule)}
-.pnum{font-family:var(--ffd);font-weight:700;font-size:clamp(44px,8vw,100px);color:var(--dim);line-height:.92;display:block;margin-bottom:8px}
-.phr{height:1px;background:var(--rule);margin:8px 0 10px}
+.pnum{font-family:var(--ffd);font-weight:700;font-size:clamp(44px,8vw,100px);color:var(--dim);line-height:.9;display:block;margin-bottom:6px}
+.phr{height:1px;background:var(--rule);margin:6px 0 8px}
 .pval{font-family:var(--ffb);font-size:clamp(13px,1.6vw,15px);font-weight:300;color:var(--body);line-height:1.65}
-.pval+.pval{margin-top:12px}
+.pval+.pval{margin-top:10px}
 
 /* ══ S5 ══ */
 .elayout{display:grid;grid-template-columns:max-content 1px 1fr;gap:0 clamp(14px,3vw,48px);margin-top:20px;align-items:start}
-@media(max-width:600px){.elayout{gap:0 12px}.dword span{font-size:clamp(18px,4.5vw,28px)!important}}
+@media(max-width:600px){.elayout{gap:0 10px}.dword span{font-size:clamp(16px,4vw,24px)!important}}
 .dword{display:flex;flex-direction:column;align-items:center;padding-top:4px}
 .dword span{font-family:var(--ffd);font-weight:700;font-size:clamp(24px,4vw,50px);color:var(--dim);letter-spacing:.08em;line-height:1.06;display:block;user-select:none}
 .ediv{background:var(--rule)}
 .eblocks{display:flex;flex-direction:column}
-.eblock{padding:18px 0;border-bottom:1px solid var(--rule)}
+.eblock{padding:16px 0;border-bottom:1px solid var(--rule)}
 .eblock:last-child{border-bottom:none}
 
-/* ══ S6 — desktop: all paras in one section ══ */
-/* 3 hairlines: above para1, above "I am curious", above pclose */
+/* ══ S6 ══ */
 .paras{display:flex;flex-direction:column;gap:0}
 .paras .pi{font-family:var(--ffb);font-size:clamp(13px,1.6vw,16px);font-weight:300;color:var(--body);line-height:1.7;padding:13px 0;border-bottom:1px solid var(--rule)}
 .paras .pi:first-child{border-top:1px solid var(--rule)}
@@ -208,26 +197,19 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
 .paras .pi.rule-above{border-top:1px solid var(--rule)}
 .paras .pclose{font-family:var(--ffd);font-size:clamp(16px,2.3vw,22px);font-weight:600;color:var(--title);line-height:1.5;padding:13px 0;border-top:1px solid var(--rule)}
 
-/* S6b mobile — part 2 gets bigger close paragraph */
+/* ══ S6b ══ */
 .s6b-paras{display:flex;flex-direction:column;gap:0}
-.s6b-paras .pi{font-family:var(--ffb);font-size:16px;font-weight:300;color:var(--body);line-height:1.75;padding:15px 0;border-bottom:1px solid var(--rule)}
+.s6b-paras .pi{font-family:var(--ffb);font-size:15px;font-weight:300;color:var(--body);line-height:1.72;padding:13px 0;border-bottom:1px solid var(--rule)}
 .s6b-paras .pi:first-child{border-top:1px solid var(--rule)}
-.s6b-close{
-  font-family:var(--ffd);
-  font-size:clamp(22px,5vw,28px); /* large — the climax */
-  font-weight:600;color:var(--title);line-height:1.45;
-  padding:20px 0 0;
-  border-top:1px solid var(--acc); /* accent rule — more prominent */
-  margin-top:4px;
-}
-.s6b-label{font-family:var(--ffui);font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--acc);position:absolute;top:calc(env(safe-area-inset-top,0px)+16px);left:22px;right:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.s6b-close{font-family:var(--ffd);font-size:clamp(20px,5vw,26px);font-weight:600;color:var(--title);line-height:1.45;padding:18px 0 0;border-top:1px solid var(--acc);margin-top:6px}
+.s6b-label{font-family:var(--ffui);font-size:11px;font-weight:600;letter-spacing:.16em;color:var(--acc);position:absolute;top:calc(env(safe-area-inset-top,0px)+18px);left:22px;right:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 /* ══ S7 ══ */
 #s7{text-align:center;align-items:center}
 .qwrap{max-width:640px;display:flex;flex-direction:column;align-items:center}
 .qt{font-family:var(--ffd);font-size:clamp(18px,3vw,30px);font-weight:400;color:var(--title);line-height:1.58;margin:12px 0 20px}
 .qr{width:100px;height:1px;background:var(--acc);opacity:.5;margin-bottom:16px}
-.qa{font-family:var(--ffui);font-size:clamp(10px,1.3vw,12px);letter-spacing:.22em;color:var(--acc);font-style:italic;margin-bottom:clamp(36px,6vw,56px)}
+.qa{font-family:var(--ffui);font-size:clamp(10px,1.3vw,12px);letter-spacing:.22em;color:var(--acc);font-style:italic;margin-bottom:clamp(32px,5vw,52px)}
 .qn{font-family:var(--ffui);font-size:11px;font-weight:700;letter-spacing:.28em;color:var(--body);margin-bottom:8px}
 #s7 .fline{position:static;margin-top:6px;justify-content:center;font-size:clamp(11px,1.3vw,13px);letter-spacing:.09em;gap:0;flex-direction:row;flex-wrap:nowrap}
 @media(max-width:600px){#s7 .fline{flex-direction:column;gap:4px;font-size:13px}}
@@ -250,14 +232,14 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
 
 <div id="prog"></div>
 <nav id="nav">
-  <div class="dot" onclick="go(0)"></div><!-- S1 -->
-  <div class="dot" onclick="go(1)"></div><!-- S2 -->
-  <div class="dot" onclick="go(2)"></div><!-- S3 -->
-  <div class="dot" onclick="go(3)"></div><!-- S4 -->
-  <div class="dot" onclick="go(4)"></div><!-- S5 -->
-  <div class="dot" onclick="go(5)"></div><!-- S6 -->
-  <div class="dot" onclick="go(6)"></div><!-- S7 (or S6b on mobile) -->
-  <div class="dot mob-dot" onclick="go(7)"></div><!-- S7 on mobile only -->
+  <div class="dot" onclick="go(0)"></div>
+  <div class="dot" onclick="go(1)"></div>
+  <div class="dot" onclick="go(2)"></div>
+  <div class="dot" onclick="go(3)"></div>
+  <div class="dot" onclick="go(4)"></div>
+  <div class="dot" onclick="go(5)"></div>
+  <div class="dot" onclick="go(6)"></div>
+  <div class="dot" id="dot7" style="display:none" onclick="go(7)"></div>
 </nav>
 
 <!-- S1 -->
@@ -271,8 +253,7 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
   </div>
   <div class="fline ein">
     <a href="mailto:eric.walsh.digital@gmail.com">eric.walsh.digital@gmail.com</a>
-    <span class="fbull">·</span>
-    <span>917.696.7850</span>
+    <span class="fbull">·</span><span>917.696.7850</span>
     <span class="fbull">·</span>
     <a href="https://linkedin.com/in/eric-walsh-digital" target="_blank" rel="noopener">/in/eric-walsh-digital</a>
   </div>
@@ -343,24 +324,23 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
     <div class="dword ein"><span>D</span><span>E</span><span>L</span><span>I</span><span>V</span><span>E</span><span>R</span></div>
     <div class="ediv ein"></div>
     <div class="eblocks">
-      <div class="eblock ein"><div class="blab">Built to Outlast</div><p class="bt" style="margin-top:7px">Each framework designed, tested, documented, and handed off with confidence.</p></div>
-      <div class="eblock ein"><div class="blab">Ownership</div><p class="bt" style="margin-top:7px">Develop and execute pilots with clearly defined criteria, rigorous go/no-go governance, and hyper-care stabilization through to full operations.</p></div>
-      <div class="eblock ein"><div class="blab">The Goal</div><p class="bt" style="margin-top:7px">Deliver with zero downtime, on time and on budget — enabling frontline execution, accelerating revenue growth and monetization, and exceeding expectations.</p></div>
+      <div class="eblock ein"><div class="blab">Built to Outlast</div><p class="bt" style="margin-top:6px">Each framework designed, tested, documented, and handed off with confidence.</p></div>
+      <div class="eblock ein"><div class="blab">Ownership</div><p class="bt" style="margin-top:6px">Develop and execute pilots with clearly defined criteria, rigorous go/no-go governance, and hyper-care stabilization through to full operations.</p></div>
+      <div class="eblock ein"><div class="blab">The Goal</div><p class="bt" style="margin-top:6px">Deliver with zero downtime, on time and on budget — enabling frontline execution, accelerating revenue growth and monetization, and exceeding expectations.</p></div>
     </div>
   </div>
   <span class="num">05 / 07</span>
 </section>
 
-<!-- S6: DESKTOP shows everything. MOBILE shows only Part 1 (up to Emmy) -->
+<!-- S6: desktop = all content. Mobile = Part 1 only (Cablevision → Emmy) -->
 <section class="sec" id="s6" data-i="5">
   <div class="slid"><span class="cat">ALIGNMENT</span><span class="sep">|</span>I'M YOUR GUY</div>
   <div class="paras">
-    <!-- Part 1: background paragraphs (shown on both desktop and mobile s6) -->
     <p class="pi ein">My experience at Cablevision was foundational — selected for their innovation think tank, strategizing, testing, and developing the initial digital set-top box. The same technology in everyone's living room today.</p>
     <p class="pi ein">At Madison Square Garden Networks, the #1 media market in the world with millions of customers, I built a career conceptualizing and launching complex products that shaped the industry and transformed MSG Networks — live in an unparalleled high-pressure environment.</p>
     <p class="pi ein">Delivering the MSG GO migration during Covid — coordinating a global team across diverse geographic locations — remains a career highlight. It was only possible through a foundation of respect, trust, and shared purpose.</p>
     <p class="pi ital ein">Recognized by industry peers with six Emmy Awards, including the first for digital innovation.</p>
-    <!-- Part 2: desktop only below — hidden on mobile (shown in s6b instead) -->
+    <!-- Part 2: hidden on mobile via CSS .desktop-only — shown in S6b instead -->
     <p class="pi rule-above ein desktop-only">I am curious, thrive on ambiguity, and keep one eye on the details and the other on the big picture.</p>
     <p class="pi ein desktop-only">Every capability this role requires I've done. Media technology and independent software share the same core challenges: legacy ecosystems, vendor dependency, and the pressure to innovate faster than the organization can absorb. The domain is different, but the discipline isn't.</p>
     <p class="pi ein desktop-only">The role being based in Dublin is an opportunity the family welcomes with enthusiasm.</p>
@@ -369,7 +349,7 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
   <span class="num">06 / 07</span>
 </section>
 
-<!-- S6b: MOBILE ONLY — Part 2 with the close as the climax -->
+<!-- S6b: mobile only — Part 2 with climax prominent -->
 <div id="s6b" data-i="6">
   <div class="s6b-label"><span style="color:var(--body);opacity:.55;font-weight:400">ALIGNMENT</span><span style="color:var(--rule);margin:0 6px">|</span>I'M YOUR GUY</div>
   <div class="s6b-paras">
@@ -377,14 +357,13 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
     <p class="pi">Every capability this role requires I've done. Media technology and independent software share the same core challenges: legacy ecosystems, vendor dependency, and the pressure to innovate faster than the organization can absorb. The domain is different, but the discipline isn't.</p>
     <p class="pi">The role being based in Dublin is an opportunity the family welcomes with enthusiasm.</p>
   </div>
-  <!-- The climax — large, prominent, last -->
   <p class="s6b-close">My next chapter is about the right fit, professionally and culturally. The more I've explored Origina, the more I recognize the values, the mission, and the people; the more I see alignment. It feels like the right room.</p>
 </div>
 
 <!-- S7 -->
 <section class="sec" id="s7" data-i="7">
   <div class="qwrap">
-    <span class="ein" style="font-family:var(--ffd);font-size:clamp(55px,10vw,110px);color:var(--dim);line-height:.5;display:block;margin-bottom:10px">&ldquo;</span>
+    <span class="ein" style="font-family:var(--ffd);font-size:clamp(50px,10vw,110px);color:var(--dim);line-height:.5;display:block;margin-bottom:10px">&ldquo;</span>
     <p class="ein qt">Happiness is neither virtue nor pleasure,<br>nor this thing nor that,<br>but simply growth.<br>We are happy when we are growing.</p>
     <div class="ein qr"></div>
     <p class="ein qa">— W.B. Yeats</p>
@@ -400,67 +379,67 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
 </section>
 
 <script>
-// On desktop, desktop-only elements show. On mobile they hide.
-// S6b is a div not a section — shown via CSS on mobile only.
-const isMobile = () => window.innerWidth <= 600;
+const isMob = () => window.innerWidth <= 600;
 
-// Show/hide desktop-only elements based on screen size
 function applyLayout(){
-  const mob = isMobile();
+  const mob = isMob();
+  // Belt AND suspenders: CSS handles it too, JS reinforces
   document.querySelectorAll('.desktop-only').forEach(el => {
-    el.style.display = mob ? 'none' : '';
+    el.style.setProperty('display', mob ? 'none' : 'block', 'important');
   });
-  // The mob-dot (8th dot) only useful on mobile
-  document.querySelectorAll('.mob-dot').forEach(el => {
-    el.style.display = mob ? 'flex' : 'none';
-  });
+  // 8th dot only on mobile
+  const d7 = document.getElementById('dot7');
+  if(d7) d7.style.display = mob ? 'block' : 'none';
 }
-applyLayout();
-window.addEventListener('resize', applyLayout);
 
-// Build snap targets dynamically based on layout
-function getSnapSections(){
-  if(isMobile()){
-    // On mobile: s1,s2,s3,s4,s5,s6,s6b,s7
-    return ['s1','s2','s3','s4','s5','s6','s6b','s7'].map(id=>document.getElementById(id)).filter(Boolean);
-  } else {
-    return ['s1','s2','s3','s4','s5','s6','s7'].map(id=>document.getElementById(id)).filter(Boolean);
-  }
+// Run immediately before any rendering
+applyLayout();
+// Run again after layout settles
+window.addEventListener('resize', applyLayout);
+document.addEventListener('DOMContentLoaded', applyLayout);
+
+function getSections(){
+  const ids = isMob()
+    ? ['s1','s2','s3','s4','s5','s6','s6b','s7']
+    : ['s1','s2','s3','s4','s5','s6','s7'];
+  return ids.map(id => document.getElementById(id)).filter(Boolean);
 }
 
 const dots = document.querySelectorAll('.dot');
 const prog = document.getElementById('prog');
 
 function update(){
-  const secs = getSnapSections();
+  const secs = getSections();
   const mid = window.innerHeight * 0.5;
   let active = 0;
   secs.forEach((s,i) => {
     const r = s.getBoundingClientRect();
-    if(r.top < window.innerHeight * 0.9) s.classList && s.classList.add('in');
+    if(r.top < window.innerHeight * 0.85) s.classList && s.classList.add('in');
     if(r.top <= mid && r.bottom > mid) active = i;
   });
-  dots.forEach((d,i) => d.classList.toggle('on', i===active));
+  dots.forEach((d,i) => d.classList.toggle('on', i === active));
   const h = document.documentElement.scrollHeight - window.innerHeight;
-  prog.style.width = (h>0 ? Math.min(window.scrollY/h*100,100) : 0)+'%';
+  prog.style.width = (h > 0 ? Math.min(window.scrollY/h*100,100) : 0) + '%';
 }
 
 window.addEventListener('scroll', update, {passive:true});
-update(); setTimeout(update,300); setTimeout(update,800);
+update();
+setTimeout(update, 200);
+setTimeout(update, 600);
 
 function go(i){
-  const secs = getSnapSections();
+  const secs = getSections();
   if(secs[i]) secs[i].scrollIntoView({behavior:'smooth'});
 }
 
 document.addEventListener('keydown', e => {
-  const secs = getSnapSections();
+  const secs = getSections();
   const cur = secs.findIndex(s => {
     const r = s.getBoundingClientRect();
-    return r.top <= window.innerHeight*.5 && r.bottom > window.innerHeight*.5;
+    return r.top <= window.innerHeight * 0.5 && r.bottom > window.innerHeight * 0.5;
   });
-  if((e.key==='ArrowDown'||e.key==='ArrowRight') && cur<secs.length-1) secs[cur+1].scrollIntoView({behavior:'smooth'});
-  if((e.key==='ArrowUp'||e.key==='ArrowLeft') && cur>0) secs[cur-1].scrollIntoView({behavior:'smooth'});
+  if((e.key==='ArrowDown'||e.key==='ArrowRight') && cur < secs.length-1) secs[cur+1].scrollIntoView({behavior:'smooth'});
+  if((e.key==='ArrowUp'||e.key==='ArrowLeft') && cur > 0) secs[cur-1].scrollIntoView({behavior:'smooth'});
 });
 </script>
 </body>
