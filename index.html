@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#101014;--title:#E8E6E0;--body:#909088;--acc:#7B9BB5;
+  --bg:#101014;--title:#E8E6E0;--body:#A8A89E;--acc:#7B9BB5;
   --dim:#1E1E24;--rule:#2A2A34;
   --ffd:'Cormorant Garamond',Georgia,serif;
   --ffui:'Barlow Condensed',sans-serif;
@@ -17,7 +17,7 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--bg)}
-body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:300;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:400;-webkit-font-smoothing:antialiased}
 
 #prog{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--acc);z-index:9999}
 #nav{position:fixed;right:12px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:9px;z-index:9998}
@@ -27,10 +27,10 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
 /* ══ SHARED ══ */
 .sec{position:relative;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
 .sec::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--acc)}
-.name {font-family:var(--ffd);font-weight:700;font-size:clamp(40px,8vw,92px);color:var(--title);letter-spacing:.04em;line-height:1}
-.role {font-family:var(--ffui);font-size:clamp(9px,1.4vw,12px);font-weight:500;letter-spacing:.28em;color:var(--acc)}
-.blab {font-family:var(--ffui);font-size:clamp(9px,1.2vw,11px);font-weight:600;letter-spacing:.2em;color:var(--acc);text-transform:uppercase;margin-bottom:7px}
-.bt   {font-family:var(--ffb);font-size:clamp(14px,1.7vw,16px);font-weight:300;color:var(--body);line-height:1.65}
+.name {font-family:var(--ffd);font-weight:700;font-size:clamp(44px,8vw,96px);color:var(--title);letter-spacing:.04em;line-height:1}
+.role {font-family:var(--ffui);font-size:clamp(10px,1.4vw,13px);font-weight:600;letter-spacing:.28em;color:var(--acc)}
+.blab {font-family:var(--ffui);font-size:clamp(10px,1.2vw,12px);font-weight:700;letter-spacing:.2em;color:var(--acc);text-transform:uppercase;margin-bottom:7px}
+.bt   {font-family:var(--ffb);font-size:clamp(13px,1.5vw,15px);font-weight:400;color:var(--body);line-height:1.7}
 .hr   {height:1px;background:var(--rule)}
 .hra  {height:1px;background:var(--acc);opacity:.55}
 .slid {font-family:var(--ffui);font-weight:600;letter-spacing:.2em;color:var(--acc);position:absolute;top:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -46,14 +46,12 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
   html{scroll-snap-type:y mandatory;overflow-y:scroll;height:100%}
   .sec{height:100vh;scroll-snap-align:start;scroll-snap-stop:always;padding:56px clamp(40px,7vw,80px) 48px}
   .sec > *:not(.ghost):not(.num):not(.slid):not(.fline){max-width:960px;width:100%;margin-left:auto;margin-right:auto}
-  .slid{font-size:clamp(11px,1.5vw,14px);left:max(clamp(40px,7vw,80px),calc(50% - 480px));right:max(clamp(40px,7vw,80px),calc(50% - 480px))}
+  .slid{font-size:clamp(11px,1.5vw,13px);left:max(clamp(40px,7vw,80px),calc(50% - 480px));right:max(clamp(40px,7vw,80px),calc(50% - 480px))}
   .num{position:absolute;bottom:16px;right:28px;font-family:var(--ffui);font-size:9px;letter-spacing:.15em;color:var(--dim)}
-  .fline{position:absolute;bottom:24px;left:clamp(40px,7vw,80px);right:clamp(40px,7vw,80px);font-size:clamp(12px,1.4vw,14px);letter-spacing:.1em;flex-wrap:nowrap}
+  .fline{position:absolute;bottom:24px;left:clamp(40px,7vw,80px);right:clamp(40px,7vw,80px);font-size:clamp(12px,1.4vw,13px);letter-spacing:.1em;flex-wrap:nowrap}
   .fbull{margin:0 12px}
   .mob-arrows{display:none}
-  /* S6b hidden on desktop — all content in S6 */
   #s6b{display:none !important}
-  /* desktop-only elements always visible on desktop */
   .desktop-only{display:block !important}
 }
 
@@ -72,27 +70,21 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
       22px
       calc(env(safe-area-inset-bottom,0px) + 70px);
   }
-  .slid{font-size:12px;letter-spacing:.16em;left:22px;right:22px;top:calc(env(safe-area-inset-top,0px) + 50px)}
+  .slid{font-size:11px;letter-spacing:.14em;left:22px;right:22px;top:calc(env(safe-area-inset-top,0px) + 48px)}
   .num{display:none}
 
-  /* FOOTER stacked, centered, beige */
   .fline{flex-direction:column;align-items:center;text-align:center;gap:4px;font-size:13px;letter-spacing:.06em;margin-top:20px;position:static;color:var(--title)}
   .fline a{color:var(--title)}
   .fbull{display:none}
 
-  /* FIX 1: desktop-only paragraphs hidden on mobile via CSS — belt AND suspenders */
   .desktop-only{display:none !important}
 
-  /* S1: tighten so name sits in visual center */
   #s1{padding-top:calc(env(safe-area-inset-top,0px) + 44px)}
-  /* S2: extra top padding so slid label doesn't overlap first block */
   #s2{padding-top:calc(env(safe-area-inset-top,0px) + 92px)}
   #s1 .fline{margin-top:24px}
 
-  /* S6: part 1 only — same height as other sections */
   #s6{height:100dvh;scroll-snap-align:start;scroll-snap-stop:always}
 
-  /* S6b: mobile part 2 — shown as full snap section */
   #s6b{
     display:flex !important;
     height:100dvh;
@@ -109,35 +101,35 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
   }
   #s6b::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--acc)}
 
-  /* FIX 2: Mobile legibility */
-  .bt{font-size:17px;line-height:1.75;font-weight:400;color:#C8C6C0 !important}
-  .blab{font-size:12px;letter-spacing:.16em;margin-bottom:9px;font-weight:700}
-  .block{padding:18px 0 16px 16px}
+  /* Mobile body text — brighter, larger, heavier */
+  .bt{font-size:16px;line-height:1.75;font-weight:400;color:#C8C6C0 !important}
+  .blab{font-size:11px;letter-spacing:.16em;margin-bottom:8px;font-weight:700}
+  .block{padding:16px 0 14px 16px}
 
-  /* FIX 3: S4 ghost numerals — much smaller on mobile */
-  .pnum{font-size:clamp(36px,8vw,52px) !important}
-  .pval{font-size:17px;line-height:1.72;font-weight:400;color:#C8C6C0 !important}
+  .pnum{font-size:clamp(32px,7vw,48px) !important}
+  .pval{font-size:16px;line-height:1.72;font-weight:400;color:#C8C6C0 !important}
 
-  /* FIX 4: S3 flowbar — smaller text, allow slight overflow hide */
   .flowbar{gap:3px;margin:10px 0 8px}
   .fw{font-size:8px;letter-spacing:.08em}
   .fa{font-size:13px}
 
-  /* S6/S6b paragraph sizing */
-  .paras .pi{font-size:17px;line-height:1.75;padding:14px 0;font-weight:400;color:#C8C6C0 !important}
-  .paras .pclose{font-size:21px;line-height:1.5;padding:14px 0;font-weight:600}
-  .s6b-paras .pi{font-size:17px;line-height:1.75;padding:14px 0;font-weight:400;color:#C8C6C0 !important}
+  .paras .pi{font-size:16px;line-height:1.75;padding:13px 0;font-weight:400;color:#C8C6C0 !important}
+  .paras .pclose{font-size:19px;line-height:1.5;padding:13px 0;font-weight:600}
+  .s6b-paras .pi{font-size:16px;line-height:1.75;padding:13px 0;font-weight:400;color:#C8C6C0 !important}
 
-  /* Model outer column text — brighter on mobile */
   .mcol:not(.ctr) .bt{color:#C8C6C0 !important}
-  /* mob-arrows */
   .mob-arrows{display:flex;align-items:center;justify-content:center;padding:4px 0;font-size:16px;color:var(--acc);line-height:1;font-family:var(--ffui);font-variant-emoji:text}
+
+  /* S1 subtitle — prevent wrapping */
+  .s1sub{font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.02em}
+  .name{font-size:clamp(52px,14vw,80px)}
+  .role{font-size:11px;letter-spacing:.2em}
 }
 
 /* ══ S1 ══ */
 .s1in{display:flex;flex-direction:column;align-items:center;text-align:center;width:100%}
 .s1in .hra{width:min(60%,400px)}
-.s1sub{font-family:var(--ffb);font-size:clamp(12px,1.5vw,15px);color:var(--body);font-style:italic;letter-spacing:.04em;margin-top:16px}
+.s1sub{font-family:var(--ffb);font-size:clamp(13px,1.5vw,15px);color:var(--body);font-style:italic;letter-spacing:.04em;margin-top:16px}
 
 /* ══ S2 ══ */
 .ghost{position:absolute;font-family:var(--ffd);font-weight:700;color:var(--dim);pointer-events:none;user-select:none;font-size:clamp(60px,12vw,160px);letter-spacing:.06em;line-height:1;left:50%;top:50%;transform:translate(-50%,-50%);z-index:0;white-space:nowrap;opacity:.6}
@@ -146,7 +138,7 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
 .block:last-child{border-bottom:none}
 .block::before{content:'';position:absolute;left:0;top:18px;bottom:16px;width:2px;background:var(--acc);opacity:.3}
 .block.mandate::before{opacity:1;width:3px}
-.block.mandate .bt{color:var(--title);font-size:clamp(15px,1.9vw,17px)}
+.block.mandate .bt{color:var(--title);font-size:clamp(14px,1.8vw,16px)}
 
 /* ══ S3 ══ */
 .flowbar{display:flex;align-items:center;justify-content:center;gap:clamp(4px,1vw,12px);flex-wrap:nowrap;margin:20px 0 20px;overflow:hidden}
@@ -180,7 +172,7 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
 .pcol+.pcol{padding-left:clamp(12px,2.5vw,28px);border-left:1px solid var(--rule)}
 .pnum{font-family:var(--ffd);font-weight:700;font-size:clamp(44px,8vw,100px);color:var(--dim);line-height:.9;display:block;margin-bottom:6px}
 .phr{height:1px;background:var(--rule);margin:6px 0 8px}
-.pval{font-family:var(--ffb);font-size:clamp(13px,1.6vw,15px);font-weight:300;color:var(--body);line-height:1.65}
+.pval{font-family:var(--ffb);font-size:clamp(13px,1.5vw,15px);font-weight:400;color:var(--body);line-height:1.68}
 .pval+.pval{margin-top:10px}
 
 /* ══ S5 ══ */
@@ -195,15 +187,15 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
 
 /* ══ S6 ══ */
 .paras{display:flex;flex-direction:column;gap:0}
-.paras .pi{font-family:var(--ffb);font-size:clamp(13px,1.6vw,16px);font-weight:300;color:var(--body);line-height:1.7;padding:13px 0;border-bottom:1px solid var(--rule)}
+.paras .pi{font-family:var(--ffb);font-size:clamp(13px,1.5vw,15px);font-weight:400;color:var(--body);line-height:1.72;padding:12px 0;border-bottom:1px solid var(--rule)}
 .paras .pi:first-child{border-top:1px solid var(--rule)}
 .paras .pi.ital{font-style:italic}
 .paras .pi.rule-above{border-top:1px solid var(--rule)}
-.paras .pclose{font-family:var(--ffd);font-size:clamp(16px,2.3vw,22px);font-weight:600;color:var(--title);line-height:1.5;padding:13px 0;border-top:1px solid var(--rule)}
+.paras .pclose{font-family:var(--ffd);font-size:clamp(16px,2.2vw,22px);font-weight:600;color:var(--title);line-height:1.5;padding:13px 0;border-top:1px solid var(--rule)}
 
 /* ══ S6b ══ */
 .s6b-paras{display:flex;flex-direction:column;gap:0}
-.s6b-paras .pi{font-family:var(--ffb);font-size:15px;font-weight:300;color:var(--body);line-height:1.72;padding:13px 0;border-bottom:1px solid var(--rule)}
+.s6b-paras .pi{font-family:var(--ffb);font-size:15px;font-weight:400;color:var(--body);line-height:1.72;padding:13px 0;border-bottom:1px solid var(--rule)}
 .s6b-paras .pi:first-child{border-top:1px solid var(--rule)}
 .s6b-close{font-family:var(--ffd);font-size:clamp(22px,5.5vw,28px);font-weight:700;color:var(--title);line-height:1.45;padding:18px 0 0;border-top:1px solid var(--acc);margin-top:6px}
 .s6b-label{font-family:var(--ffui);font-size:11px;font-weight:600;letter-spacing:.16em;color:var(--acc);position:absolute;top:calc(env(safe-area-inset-top,0px) + 50px);left:22px;right:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -344,21 +336,20 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
     <p class="pi ein">At Madison Square Garden Networks, the #1 media market in the world with millions of customers, I built a career conceptualizing and launching complex products that shaped the industry and transformed MSG Networks — live in an unparalleled high-pressure environment.</p>
     <p class="pi ein">Delivering the MSG GO migration during Covid — coordinating a global team across diverse geographic locations — remains a career highlight. It was only possible through a foundation of respect, trust, and shared purpose.</p>
     <p class="pi ital ein">Recognized by industry peers with six Emmy Awards, including the first for digital innovation.</p>
-    <!-- Part 2: hidden on mobile via CSS .desktop-only — shown in S6b instead -->
     <p class="pi rule-above ein desktop-only">I am curious, thrive on ambiguity, and keep one eye on the details and the other on the big picture.</p>
-    <p class="pi ein desktop-only">Every capability this role requires I've done. Media technology and independent software share the same core challenges: legacy ecosystems, vendor dependency, and the pressure to innovate faster than the organization can absorb. The domain is different, but the discipline isn't.</p>
+    <p class="pi ein desktop-only">Every capability this role requires, I've done. Media technology and independent software share the same core challenges: legacy ecosystems, vendor dependency, and the pressure to innovate faster than the organization can absorb. The domain is different, but the discipline isn't.</p>
     <p class="pi ein desktop-only">The role being based in Dublin is an opportunity the family welcomes with enthusiasm.</p>
     <p class="pclose ein desktop-only">My next chapter is about the right fit, professionally and culturally. The more I've explored Origina, the more I recognize the values, the mission, and the people; the more I see alignment. It feels like the right room.</p>
   </div>
   <span class="num">06 / 07</span>
 </section>
 
-<!-- S6b: mobile only — Part 2 with climax prominent -->
+<!-- S6b: mobile only -->
 <div id="s6b" data-i="6">
   <div class="s6b-label"><span style="color:var(--body);opacity:.55;font-weight:400">ALIGNMENT</span><span style="color:var(--body);opacity:.4;margin:0 6px">|</span>I'M YOUR GUY</div>
   <div class="s6b-paras">
     <p class="pi">I am curious, thrive on ambiguity, and keep one eye on the details and the other on the big picture.</p>
-    <p class="pi">Every capability this role requires I've done. Media technology and independent software share the same core challenges: legacy ecosystems, vendor dependency, and the pressure to innovate faster than the organization can absorb. The domain is different, but the discipline isn't.</p>
+    <p class="pi">Every capability this role requires, I've done. Media technology and independent software share the same core challenges: legacy ecosystems, vendor dependency, and the pressure to innovate faster than the organization can absorb. The domain is different, but the discipline isn't.</p>
     <p class="pi">The role being based in Dublin is an opportunity the family welcomes with enthusiasm.</p>
   </div>
   <p class="s6b-close">My next chapter is about the right fit, professionally and culturally. The more I've explored Origina, the more I recognize the values, the mission, and the people; the more I see alignment. It feels like the right room.</p>
@@ -371,6 +362,7 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
     <p class="ein qt">Happiness is neither virtue nor pleasure,<br>nor this thing nor that,<br>but simply growth.<br>We are happy when we are growing.</p>
     <div class="ein qr"></div>
     <p class="ein qa">— W.B. Yeats</p>
+    <p class="ein" style="font-family:var(--ffd);font-size:clamp(40px,8vw,90px);color:var(--dim);line-height:.5;display:block;margin-bottom:clamp(20px,4vw,40px)">&rdquo;</p>
     <p class="ein qn">ERIC WALSH</p>
     <div class="fline ein">
       <a href="mailto:eric.walsh.digital@gmail.com">eric.walsh.digital@gmail.com</a>
@@ -387,18 +379,14 @@ const isMob = () => window.innerWidth <= 600;
 
 function applyLayout(){
   const mob = isMob();
-  // Belt AND suspenders: CSS handles it too, JS reinforces
   document.querySelectorAll('.desktop-only').forEach(el => {
     el.style.setProperty('display', mob ? 'none' : 'block', 'important');
   });
-  // 8th dot only on mobile
   const d7 = document.getElementById('dot7');
   if(d7) d7.style.display = mob ? 'block' : 'none';
 }
 
-// Run immediately before any rendering
 applyLayout();
-// Run again after layout settles
 window.addEventListener('resize', applyLayout);
 document.addEventListener('DOMContentLoaded', applyLayout);
 
