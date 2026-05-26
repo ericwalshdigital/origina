@@ -85,6 +85,8 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
 
   /* S1: tighten so name sits in visual center */
   #s1{padding-top:calc(env(safe-area-inset-top,0px) + 44px)}
+  /* S2: extra top padding so slid label doesn't overlap first block */
+  #s2{padding-top:calc(env(safe-area-inset-top,0px) + 92px)}
   #s1 .fline{margin-top:24px}
 
   /* S6: part 1 only — same height as other sections */
@@ -108,14 +110,13 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
   #s6b::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--acc)}
 
   /* FIX 2: Mobile legibility */
-  .bt{font-size:17px;line-height:1.75;font-weight:400;color:#C8C6C0}
+  .bt{font-size:17px;line-height:1.75;font-weight:400;color:#C8C6C0 !important}
   .blab{font-size:12px;letter-spacing:.16em;margin-bottom:9px;font-weight:700}
-  .blocks{margin-top:8px}
   .block{padding:18px 0 16px 16px}
 
   /* FIX 3: S4 ghost numerals — much smaller on mobile */
   .pnum{font-size:clamp(36px,8vw,52px) !important}
-  .pval{font-size:17px;line-height:1.72;font-weight:400;color:#C8C6C0}
+  .pval{font-size:17px;line-height:1.72;font-weight:400;color:#C8C6C0 !important}
 
   /* FIX 4: S3 flowbar — smaller text, allow slight overflow hide */
   .flowbar{gap:3px;margin:10px 0 8px}
@@ -123,12 +124,12 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
   .fa{font-size:13px}
 
   /* S6/S6b paragraph sizing */
-  .paras .pi{font-size:17px;line-height:1.75;padding:14px 0;font-weight:400;color:#C8C6C0}
+  .paras .pi{font-size:17px;line-height:1.75;padding:14px 0;font-weight:400;color:#C8C6C0 !important}
   .paras .pclose{font-size:21px;line-height:1.5;padding:14px 0;font-weight:600}
-  .s6b-paras .pi{font-size:17px;line-height:1.75;padding:14px 0;font-weight:400;color:#C8C6C0}
+  .s6b-paras .pi{font-size:17px;line-height:1.75;padding:14px 0;font-weight:400;color:#C8C6C0 !important}
 
   /* Model outer column text — brighter on mobile */
-  .mcol:not(.ctr) .bt{color:#C8C6C0}
+  .mcol:not(.ctr) .bt{color:#C8C6C0 !important}
   /* mob-arrows */
   .mob-arrows{display:flex;align-items:center;justify-content:center;padding:4px 0;font-size:16px;color:var(--acc);line-height:1;font-family:var(--ffui);font-variant-emoji:text}
 }
@@ -292,7 +293,7 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
     <div class="mob-arrows" aria-hidden="true">&#x2195;&#xFE0E;</div>
     <div class="mcol ctr ein"><div class="chdr">Service Readiness &amp; Enablement</div><div class="chr"></div><p class="bt">Execution at scale through structured process, continuous optimization, and cross-functional governance — with frontline operations embedded directly into the build cycle from the outset.</p></div>
     <div class="mob-arrows" aria-hidden="true">&#x2195;&#xFE0E;</div>
-    <div class="mcol ein"><div class="chdr">Operations</div><div class="chr"></div><p class="bt">A continuous feedback loop ensures innovation is operationally viable and allows for operations to evolve with each delivery informing the next iteration.</p></div>
+    <div class="mcol ein"><div class="chdr">Delivery</div><div class="chr"></div><p class="bt">A continuous feedback loop ensures innovation is operationally viable and allows for operations to evolve with each delivery informing the next iteration.</p></div>
   </div>
   <span class="num">03 / 07</span>
 </section>
@@ -308,12 +309,12 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
     </div>
     <div class="pcol ein">
       <span class="pnum">02</span><div class="blab">Legacy as a Foundational Asset</div><div class="phr"></div>
-      <p class="pval">Institutional knowledge is not a liability — it's a competitive advantage. The goal is building systems and processes that make it permanent, scalable, and transferable.</p>
+      <p class="pval">Institutional knowledge is a competitive advantage — when paired with the discipline to push past legacy mindsets.</p>
       <p class="pval">Honor what exists. Eliminate what limits. Build what lasts.</p>
     </div>
     <div class="pcol ein">
       <span class="pnum">03</span><div class="blab">Leadership</div><div class="phr"></div>
-      <p class="pval">Scalable delivery requires more than process — it requires people who are aligned, trusted, and equipped to execute.</p>
+      <p class="pval">Scalable delivery requires more than process — it requires people who are aligned, trusted, and empowered to execute.</p>
       <p class="pval">Build the team. Earn the trust. Deliver together.</p>
     </div>
   </div>
