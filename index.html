@@ -108,13 +108,14 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
   #s6b::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--acc)}
 
   /* FIX 2: Mobile legibility */
-  .bt{font-size:17px;line-height:1.75;font-weight:400}
+  .bt{font-size:17px;line-height:1.75;font-weight:400;color:#C8C6C0}
   .blab{font-size:12px;letter-spacing:.16em;margin-bottom:9px;font-weight:700}
+  .blocks{margin-top:8px}
   .block{padding:18px 0 16px 16px}
 
   /* FIX 3: S4 ghost numerals — much smaller on mobile */
   .pnum{font-size:clamp(36px,8vw,52px) !important}
-  .pval{font-size:17px;line-height:1.72;font-weight:400}
+  .pval{font-size:17px;line-height:1.72;font-weight:400;color:#C8C6C0}
 
   /* FIX 4: S3 flowbar — smaller text, allow slight overflow hide */
   .flowbar{gap:3px;margin:10px 0 8px}
@@ -122,10 +123,12 @@ body{background:var(--bg);color:var(--body);font-family:var(--ffb);font-weight:3
   .fa{font-size:13px}
 
   /* S6/S6b paragraph sizing */
-  .paras .pi{font-size:17px;line-height:1.75;padding:14px 0;font-weight:400}
+  .paras .pi{font-size:17px;line-height:1.75;padding:14px 0;font-weight:400;color:#C8C6C0}
   .paras .pclose{font-size:21px;line-height:1.5;padding:14px 0;font-weight:600}
-  .s6b-paras .pi{font-size:17px;line-height:1.75;padding:14px 0;font-weight:400}
+  .s6b-paras .pi{font-size:17px;line-height:1.75;padding:14px 0;font-weight:400;color:#C8C6C0}
 
+  /* Model outer column text — brighter on mobile */
+  .mcol:not(.ctr) .bt{color:#C8C6C0}
   /* mob-arrows */
   .mob-arrows{display:flex;align-items:center;justify-content:center;padding:4px 0;font-size:16px;color:var(--acc);line-height:1;font-family:var(--ffui);font-variant-emoji:text}
 }
